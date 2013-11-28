@@ -1,0 +1,182 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.yana.selenium</groupId>
+  <artifactId>integration</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>integration</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+
+  <build>
+  <resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+  	<plugins>
+	 <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.8.1</version>
+        <configuration>
+          <doctitle>Selenium Web Driver Tests for ${project.name} ${project.version}</doctitle> <!-- Used by javadoc:javadoc goal -->
+          <windowtitle>Selenium Web Driver Tests for ${project.name} ${project.version}</windowtitle> <!-- Used by javadoc:javadoc goal -->
+
+          <testDoctitle>Selenium Web Driver Tests ${project.name} ${project.version}</testDoctitle> <!-- Used by javadoc:test-javadoc goal -->
+          <testWindowtitle>Selenium Web Driver Tests ${project.name} ${project.version}</testWindowtitle> <!-- Used by javadoc:test-javadoc goal -->
+        </configuration>
+      </plugin> 
+		 <plugin>
+	             <groupId>org.apache.maven.plugins</groupId>
+	             <artifactId>maven-compiler-plugin</artifactId>
+	             <version>2.3.2</version>
+	             <configuration>
+	                 <source>1.6</source>
+	                 <target>1.6</target>
+	             </configuration>
+	         </plugin>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-surefire-plugin</artifactId>
+  			<version>2.16</version>
+			<configuration> 
+ 			
+				<suiteXmlFiles>
+					<suiteXmlFile>./src/main/resources/SanityTest.xml</suiteXmlFile>
+				</suiteXmlFiles> 
+ 				</configuration>
+  		</plugin>
+		<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>2.12.4</version>
+        <configuration>
+         <outputDirectory>${basedir}/Reports</outputDirectory>
+          <outputName>TestRun-Reports-At-${maven.build.timestamp}</outputName>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.2</version>
+        <configuration>
+          <outputDirectory>${basedir}/Reports</outputDirectory>
+        </configuration>
+      </plugin> 
+	</plugins>
+	
+  </build>
+  <reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.6.1</version>
+			</plugin>
+		</plugins>
+	</reporting>
+	<!--<repositories>
+		<repository>
+			<id>selenium</id>
+			<name>Selenium release repository</name>
+			<url>http://repo1.maven.org/maven2/org/seleniumhq/selenium/</url>
+		</repository>
+	</repositories> -->
+	  <dependencies>
+  <dependency>
+			<artifactId>commons-lang</artifactId>
+			<groupId>commons-lang</groupId>
+			<version>2.1</version>
+		</dependency>
+		<dependency>
+			<artifactId>commons-logging</artifactId>
+			<groupId>commons-logging</groupId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<artifactId>commons-codec</artifactId>
+			<groupId>commons-codec</groupId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<artifactId>commons-io</artifactId>
+			<groupId>commons-io</groupId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<artifactId>commons-collections</artifactId>
+			<groupId>commons-collections</groupId>
+			<version>3.2.1</version>
+		</dependency>
+  <dependency>
+	<groupId>net.sourceforge.jexcelapi</groupId>
+	<artifactId>jxl</artifactId>
+	<version>2.6.12</version>
+  </dependency>            
+   <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>3.9</version>
+	</dependency>
+  <dependency>
+     <groupId>org.testng</groupId>
+     <artifactId>testng</artifactId>
+     <version>6.8.3</version>
+     <scope>test</scope>
+    </dependency>
+  <dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>2.37.1</version>
+    </dependency>
+    <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-firefox-driver</artifactId>
+        <version>2.37.1</version>
+    </dependency>  
+    <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-server</artifactId>
+        <version>2.37.1</version>
+    </dependency>  
+    <dependency>
+	<groupId>javax.servlet</groupId>
+	<artifactId>servlet-api</artifactId>
+	<version>2.5</version>
+    </dependency>
+            
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+	<groupId>com.beust</groupId>
+	<artifactId>jcommander</artifactId>
+	<version>1.12</version>
+</dependency>
+   <dependency>
+        <groupId>info.cukes</groupId>
+        <artifactId>cucumber-picocontainer</artifactId>
+        <version>1.1.5</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>info.cukes</groupId>
+        <artifactId>cucumber-junit</artifactId>
+        <version>1.1.5</version>
+        <scope>test</scope>
+    </dependency>
+         
+  </dependencies>
+</project>

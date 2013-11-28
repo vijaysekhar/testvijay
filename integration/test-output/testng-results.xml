@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="24518" started-at="2013-11-28T08:59:27Z" finished-at="2013-11-28T08:59:52Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="24518" started-at="2013-11-28T08:59:27Z" finished-at="2013-11-28T08:59:52Z">
+      <class name="com.yana.selenium.integration.qa.testscripts.web.sanity.FirstTest">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.yana.selenium.integration.qa.testscripts.web.sanity.FirstTest@32bb55]" name="beforeMethod" is-config="true" duration-ms="16295" started-at="2013-11-28T14:29:27Z" finished-at="2013-11-28T14:29:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="firstTestCase()[pri:0, instance:com.yana.selenium.integration.qa.testscripts.web.sanity.FirstTest@32bb55]" name="firstTestCase" duration-ms="7603" started-at="2013-11-28T14:29:43Z" finished-at="2013-11-28T14:29:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- firstTestCase -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.yana.selenium.integration.qa.testscripts.web.sanity.FirstTest@32bb55]" name="afterMethod" is-config="true" duration-ms="576" started-at="2013-11-28T14:29:51Z" finished-at="2013-11-28T14:29:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- com.yana.selenium.integration.qa.testscripts.web.sanity.FirstTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

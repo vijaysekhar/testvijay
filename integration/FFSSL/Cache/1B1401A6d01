@@ -1,0 +1,479 @@
+/* Vignette */
+
+/* -----------------------------------------------------------------
+  Accesso
+ ----------------------------------------------------------------- */
+ 
+function writeThis(){
+	var anonP3Cook0 = getCookie('anonP3');
+	var anonP3Cook2 = String(anonP3Cook0);
+	
+	anonP3Cook2=anonP3Cook2.replace(/</g, " ");
+	anonP3Cook2=anonP3Cook2.replace(/>/g, " ");
+	anonP3Cook2=anonP3Cook2.replace(/{/g, " ");
+	anonP3Cook2=anonP3Cook2.replace(/}/g, " ");
+	anonP3Cook2=anonP3Cook2.replace(/\"/g, " ");
+	anonP3Cook2=anonP3Cook2.replace(/\//g, " ");
+	anonP3Cook2=anonP3Cook2.replace(/\\/g, " ");
+	anonP3Cook2=anonP3Cook2.replace(/;/g, " ");
+	anonP3Cook2=anonP3Cook2.replace(/script/ig, " ");
+	anonP3Cook2=anonP3Cook2.replace(/javascript/ig, " ");
+	
+	var strOutput='<span>Welcome</span> <a href="http://www.o2.co.uk/login?sendTo='+location.href+'" title="Sign In">Sign In</a> or <a href="https://registration.o2.co.uk/Register/PreRegister" title="Register">Register</a>';
+	if (anonP3Cook0 != null)	{ 		
+		strOutput = '<span>Hello</span> ' +anonP3Cook2+ ' <a href="http://zarkov.shop.o2.co.uk/logout.html?dest=http://www.o2.co.uk/" title="Sign out of your account">Sign Out</a>';
+	} 
+	return strOutput;
+}
+
+
+ /* -----------------------------------------------------------------
+  Year
+ ----------------------------------------------------------------- */
+ 
+function thisYear(){
+var cTime = new Date();
+var year = cTime.getFullYear();
+document.write(year);
+}
+
+ 
+ /* -----------------------------------------------------------------
+  Cookies functions for first time visit
+ ----------------------------------------------------------------- */
+ 
+ 
+// 5 20.10.2006
+var cmTrue ="";
+function getCookie(name) {
+    var start = document.cookie.indexOf( name + "=" );
+	var len = start + name.length + 1;
+	if ( ( !start ) && ( name != document.cookie.substring( 0, name.length ) ) ) {
+		return null;
+	}
+	if ( start == -1 ) return null;
+	var end = document.cookie.indexOf( ";", len );
+	if ( end == -1 ) end = document.cookie.length;
+	return unescape( document.cookie.substring( len, end ) );
+}
+
+function setCookie(name,value,expires,path,domain,secure) {
+	var today = new Date();
+	today.setTime( today.getTime() );
+	if ( expires ) {
+	expires = expires * 1000 * 60 * 60 * 24;
+	}
+	var expires_date = new Date( today.getTime() + (expires) );
+
+	document.cookie = name + "=" +escape( value ) +
+	( ( expires ) ? ";expires=" + expires_date.toGMTString() : "" ) + 
+	( ( path ) ? ";path=" + path : "" ) + 
+	( ( domain ) ? ";domain=" + domain : "" ) +
+	( ( secure ) ? ";secure" : "" );
+}
+
+function deleteCookie(name,path,domain) {
+    if (getCookie(name)) document.cookie = name + "=" +
+        ( (path) ? ";path=" + path : "") +
+        ( (domain) ? ";domain=" + domain : "") +
+		";expires=";
+}
+
+
+function isCookieEnabled() {
+   if (document.all) return navigator.cookieEnabled;
+   setCookie('testcookie',today.getTime());
+   var tc = getCookie('testcookie');
+   deleteCookie('testcookie');
+   return (tc == today.getTime());
+}
+
+
+/* -----------------------------------------------------------------
+  function for changing cursor to "wait" mode
+ ----------------------------------------------------------------- */
+
+function hourglassButton() {
+ FObj=document.forms;
+ for (i=0;i<FObj.length;i++){
+ 	FObj[i].onmouseup=function(){document.body.style.cursor = 'wait';return true}
+	}
+}
+
+function hourglass(){
+ lObj=document.links;
+ for (i=0;i<lObj.length;i++){
+ 	lObj[i].onmouseup=function(){document.body.style.cursor = 'wait';return true}
+	}
+}
+
+
+/* -----------------------------------------------------------------
+  function for Expand/Contract blocks
+ ----------------------------------------------------------------- */
+
+function display_flip(i,p)
+{
+	var root = document.getElementById(i)
+   root.className = root.className.replace('displayNone', 'displayBlock');
+   var el = document.getElementById(p);
+   var c = el.className = (el.className=='displayNone') ? 'displayBlock' : 'displayNone'
+   if (c=='displayNone') {
+   //alert('test');
+       root.src = root.src.replace('contract', 'expand')
+       root.setAttribute('alt', 'Expand')
+       root.setAttribute('title', 'Expand')
+   } else {
+       root.src = root.src.replace('expand', 'contract')
+       root.setAttribute('alt', 'Contract')
+       root.setAttribute('title', 'Contract')
+   }
+   return false;
+}
+		
+		
+/* -----------------------------------------------------------------
+  function for Flash Movies and alternative imagery
+ ----------------------------------------------------------------- */
+		
+		// FLASH MOVIE
+			var MM_contentVersion = 6;
+			var plugin = (navigator.mimeTypes && navigator.mimeTypes["application/x-shockwave-flash"]) ? navigator.mimeTypes["application/x-shockwave-flash"].enabledPlugin : 0;
+			if ( plugin ) {
+					var words = navigator.plugins["Shockwave Flash"].description.split(" ");
+				    for (var i = 0; i < words.length; ++i)
+				    {
+					if (isNaN(parseInt(words[i])))
+					continue;
+					var MM_PluginVersion = words[i]; 
+				    }
+				var MM_FlashCanPlay = MM_PluginVersion >= MM_contentVersion;
+			}
+			else if (navigator.userAgent && navigator.userAgent.indexOf("MSIE")>=0 
+			   && (navigator.appVersion.indexOf("Win") != -1)) {
+				document.write('<SCR' + 'IPT LANGUAGE=VBScript\> \n'); //FS hide this from IE4.5 Mac by splitting the tag
+				document.write('on error resume next \n');
+				document.write('MM_FlashCanPlay = ( IsObject(CreateObject("ShockwaveFlash.ShockwaveFlash." & MM_contentVersion)))\n');
+				document.write('</SCR' + 'IPT\> \n');
+			}
+			
+			
+function flashMovie(version, filepath, width, height, bgcolor, quality, alternativeText, alternativeImage, altURL, altTitle, altTarget, clickTag){
+
+/* Check to see if https */
+url = document.URL;
+isHttps = "no";
+if (url.search(/^http:/) != -1) {isHttps = "no"};
+if (url.search(/^https:/) != -1) {isHttps = "yes"};
+
+if ( MM_FlashCanPlay ) {
+	if (clickTag == undefined) var clickTag = "";
+	else var clickTag = "?clickTag=" + clickTag; 
+	
+	if (clickTag == "HP") {
+	var clickTag = "?clickTag=/services/o2active/whatsono2active/whatsnew/?ref=Ban-consumer-Streetmap-Home";
+} else {
+	var clickTag = "?clickTag=" + altURL;
+}
+	
+	
+	
+	var swf = '';
+		swf += '<object';
+		swf += ' width="'+width+'"';
+		swf += ' height="'+height+'"';
+		swf += ' classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"';
+		if (isHttps == "yes"){ 
+			swf += ' codebase="https://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version='+version+',0,0,0">';
+			} else {
+			swf += ' codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version='+version+',0,0,0">';
+			}
+		swf += '<param name="movie" value="'+filepath+clickTag+'">';
+		swf += '<param name="wmode" value="transparent">';
+		swf += '<param name="bgcolor" value="'+bgcolor+'">';
+		swf += '<param name="quality" value="'+quality+'">';
+		swf += '<embed src="'+filepath+clickTag+'"';
+		swf += ' width="'+width+'"';
+		swf += ' height="'+height+'"';
+		swf += ' wmode="transparent"';
+		swf += ' allowScriptAccess="always"';
+		swf += ' bgcolor="'+bgcolor+'"';
+		swf += ' quality="'+quality+'"';
+		swf += ' type="application/x-shockwave-flash"';
+		if (isHttps == "yes"){ 
+			swf += ' pluginspage="https://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">';
+			} else {
+			swf += ' pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">';
+			}
+		swf += '<\/embed>';
+		swf += '<\/object>';
+		
+		document.write(swf);
+		// alternative content for flash movie
+		document.write('<div class="flashText">'+ alternativeText +'</div>');		
+	}
+	else{
+	// image to replace flash movie
+		//document.write('<div class="topBgImg"><img src="'+alternativeImage+'"></div>');
+			if ((altURL=="") || (altURL==" ") || (altURL=="#")) {
+				document.write("<img src=\""+alternativeImage+"\" width=\""+width+"\" height=\""+height+"\" alt=\""+alternativeText+"\" />");
+			} else {
+				document.write("<a href=\""+altURL+"\" title=\""+altTitle+"\" target=\""+altTarget+"\" />");
+				document.write("<img src=\""+alternativeImage+"\" width=\""+width+"\" height=\""+height+"\" alt=\""+alternativeText+"\" />");
+				document.write("</a>");
+			}
+		}
+			
+}
+
+/* -----------------------------------------------------------------
+  Function For Plugin Detection
+ ----------------------------------------------------------------- */
+/*------------------------------------------------------------------
+This is a comment placed here to check that the file will checksum 
+correctly when mounts the filesystem volumes during publish
+Created on: Wednesday 20 September 2006
+--------------------------------------------------------------------*/
+
+// initialize global variables
+var detectableWithVB = false;
+var pluginFound = false;
+
+
+function goURL(daURL) {
+    // if the browser can do it, use replace to preserve back button
+    if(javascriptVersion1_1) {
+	window.location.replace(daURL);
+    } else {
+	window.location = daURL;
+    }
+    return;
+}
+
+function redirectCheck(pluginFound, redirectURL, redirectIfFound) {
+    // check for redirection
+    if( redirectURL && ((pluginFound && redirectIfFound) || 
+	(!pluginFound && !redirectIfFound)) ) {
+	// go away
+	goURL(redirectURL);
+	return pluginFound;
+    } else {
+	// stay here and return result of plugin detection
+	return pluginFound;
+    }	
+}
+
+function canDetectPlugins() {
+    if( detectableWithVB || (navigator.plugins && navigator.plugins.length > 0) ) {
+	return true;
+    } else {
+	return false;
+    }
+}
+
+function detectFlash(redirectURL, redirectIfFound) {
+    pluginFound = detectPlugin('Shockwave','Flash'); 
+    // if not found, try to detect with VisualBasic
+    if(!pluginFound && detectableWithVB) {
+	pluginFound = detectActiveXControl('ShockwaveFlash.ShockwaveFlash.1');
+    }
+    // check for redirection
+    return redirectCheck(pluginFound, redirectURL, redirectIfFound);
+}
+
+function detectDirector(redirectURL, redirectIfFound) { 
+    pluginFound = detectPlugin('Shockwave','Director'); 
+    // if not found, try to detect with VisualBasic
+    if(!pluginFound && detectableWithVB) {
+	pluginFound = detectActiveXControl('SWCtl.SWCtl.1');
+    }
+    // check for redirection
+    return redirectCheck(pluginFound, redirectURL, redirectIfFound);
+}
+
+function detectQuickTime(redirectURL, redirectIfFound) {
+    pluginFound = detectPlugin('QuickTime');
+    // if not found, try to detect with VisualBasic
+    if(!pluginFound && detectableWithVB) {
+	pluginFound = detectQuickTimeActiveXControl();
+    }
+    return redirectCheck(pluginFound, redirectURL, redirectIfFound);
+}
+
+function detectReal(redirectURL, redirectIfFound) {
+    pluginFound = detectPlugin('RealPlayer');
+    // if not found, try to detect with VisualBasic
+    if(!pluginFound && detectableWithVB) {
+	pluginFound = (detectActiveXControl('rmocx.RealPlayer G2 Control') ||
+		       detectActiveXControl('RealPlayer.RealPlayer(tm) ActiveX Control (32-bit)') ||
+		       detectActiveXControl('RealVideo.RealVideo(tm) ActiveX Control (32-bit)'));
+    }	
+    return redirectCheck(pluginFound, redirectURL, redirectIfFound);
+}
+
+function detectWindowsMedia(redirectURL, redirectIfFound) {
+    pluginFound = detectPlugin('Windows Media Player');
+    // if not found, try to detect with VisualBasic
+    if(!pluginFound && detectableWithVB) {
+	pluginFound = detectActiveXControl('MediaPlayer.MediaPlayer.1');
+    }
+    return redirectCheck(pluginFound, redirectURL, redirectIfFound);
+}
+
+function detectPlugin() {
+    // allow for multiple checks in a single pass
+    var daPlugins = detectPlugin.arguments;
+    // consider pluginFound to be false until proven true
+    var pluginFound = false;
+    // if plugins array is there and not fake
+    if (navigator.plugins && navigator.plugins.length > 0) {
+	var pluginsArrayLength = navigator.plugins.length;
+	// for each plugin...
+	for (pluginsArrayCounter=0; pluginsArrayCounter < pluginsArrayLength; pluginsArrayCounter++ ) {
+	    // loop through all desired names and check each against the current plugin name
+	    var numFound = 0;
+	    for(namesCounter=0; namesCounter < daPlugins.length; namesCounter++) {
+		// if desired plugin name is found in either plugin name or description
+		if( (navigator.plugins[pluginsArrayCounter].name.indexOf(daPlugins[namesCounter]) >= 0) || 
+		    (navigator.plugins[pluginsArrayCounter].description.indexOf(daPlugins[namesCounter]) >= 0) ) {
+		    // this name was found
+		    numFound++;
+		}   
+	    }
+	    // now that we have checked all the required names against this one plugin,
+	    // if the number we found matches the total number provided then we were successful
+	    if(numFound == daPlugins.length) {
+		pluginFound = true;
+		// if we've found the plugin, we can stop looking through at the rest of the plugins
+		break;
+	    }
+	}
+    }
+    return pluginFound;
+} // detectPlugin
+
+
+// Here we write out the VBScript block for MSIE Windows
+if ((navigator.userAgent.indexOf('MSIE') != -1) && (navigator.userAgent.indexOf('Win') != -1)) {
+    document.writeln('<script language="VBscript">');
+
+    document.writeln('\'do a one-time test for a version of VBScript that can handle this code');
+    document.writeln('detectableWithVB = False');
+    document.writeln('If ScriptEngineMajorVersion >= 2 then');
+    document.writeln('  detectableWithVB = True');
+    document.writeln('End If');
+
+    document.writeln('\'this next function will detect most plugins');
+    document.writeln('Function detectActiveXControl(activeXControlName)');
+    document.writeln('  on error resume next');
+    document.writeln('  detectActiveXControl = False');
+    document.writeln('  If detectableWithVB Then');
+    document.writeln('     detectActiveXControl = IsObject(CreateObject(activeXControlName))');
+    document.writeln('  End If');
+    document.writeln('End Function');
+
+    document.writeln('\'and the following function handles QuickTime');
+    document.writeln('Function detectQuickTimeActiveXControl()');
+    document.writeln('  on error resume next');
+    document.writeln('  detectQuickTimeActiveXControl = False');
+    document.writeln('  If detectableWithVB Then');
+    document.writeln('    detectQuickTimeActiveXControl = False');
+    document.writeln('    hasQuickTimeChecker = false');
+    document.writeln('    Set hasQuickTimeChecker = CreateObject("QuickTimeCheckObject.QuickTimeCheck.1")');
+    document.writeln('    If IsObject(hasQuickTimeChecker) Then');
+    document.writeln('      If hasQuickTimeChecker.IsQuickTimeAvailable(0) Then ');
+    document.writeln('        detectQuickTimeActiveXControl = True');
+    document.writeln('      End If');
+    document.writeln('    End If');
+    document.writeln('  End If');
+    document.writeln('End Function');
+
+    document.writeln('</scr' + 'ipt>');
+}
+
+/* -----------------------------------------------------------------
+  Function for checking all boxes on a table
+ ----------------------------------------------------------------- */
+function checkAll(e) {
+	var theForm = e.form;
+	for(n=0; n<theForm.length;n++){
+		if(theForm[n].type == 'checkbox' && theForm[n].name != 'checkall'){
+			theForm[n].checked = e.checked;
+		}
+	}
+}
+/* -----------------------------------------------------------------
+  Function for showing and hiding elements
+ ----------------------------------------------------------------- */
+
+function hide(i)
+{	
+	var root = document.getElementById(i);
+       root.className = root.className.replace('visA', 'visH');
+   return false;
+}
+function show(i)
+{
+var root = document.getElementById(i);
+       root.className = root.className.replace('visH', 'visA');
+   return false;
+}
+
+/* -----------------------------------------------------------------
+  Init function for initialise JS onLoad
+ ----------------------------------------------------------------- */
+
+ function init1(){
+	if(cmTrue == 1){
+		cmDomReady();
+	} 
+	globalTopNav();
+}	 
+
+window.onload=init1;
+
+
+/*------------------------------------------------------------------
+	include for WebChat functions
+------------------------------------------------------------------*/
+if(location.hostname == "www.o2broadband.o2.co.uk")
+{
+    if(location.protocol == "https:")
+    {
+        document.write("<s"+"cript type='text/javascript' src='https://shop.o2.co.uk/update/chat/broadband/broadband-mtagconfig.js'></scr"+"ipt>");   
+    }
+    else
+    {
+        document.write("<s"+"cript type='text/javascript' src='http://shop.o2.co.uk/update/chat/broadband/broadband-mtagconfig.js'></scr"+"ipt>");
+    }
+}
+
+
+if 	(  (location.href.toLowerCase().indexOf('if.o2.co.uk/templates/home.aspx') > -1)
+	|| (location.href.toLowerCase().indexOf('if.o2.co.uk/templates/moreinfo.aspx') > -1)
+	|| (location.href.toLowerCase().indexOf('if.o2.co.uk/templates/loginstep1.aspx') > -1)
+	|| (location.href.toLowerCase().indexOf('if.o2.co.uk/templates/loginstep2.aspx') > -1)
+	|| (location.href.toLowerCase().indexOf('t=interfavor,question=ref(user):str(mobile)') > -1)
+	|| (location.href.toLowerCase().indexOf('t=paygo_lvl2,') > -1)
+	|| (location.href.toLowerCase().indexOf('t=pg_tab2,ts=care2_5_customer,question=ref(user):str(mobile)') > -1)
+	|| (location.href.toLowerCase().indexOf('t=pg_tab3,ts=care2_5_customer,question=ref(user):str(mobile)') > -1)
+	|| (location.href.toLowerCase().indexOf('t=pg_tab4,ts=care2_5_customer,question=ref(user):str(mobile)') > -1)
+	|| (location.href.toLowerCase().indexOf('t=kylie_lvl2,question=ref(user):str(mobile)') > -1)
+	|| (location.href.toLowerCase().indexOf('t=datacharges,question=ref(user):str(mobile)') > -1)
+	|| (location.href.toLowerCase().indexOf('service.o2.co.uk/iq') > -1)
+	|| (location.href.toLowerCase().indexOf('registration.o2.co.uk/reclaim/reclaimusername') > -1)
+	|| (location.href.toLowerCase().indexOf('registration.o2.co.uk/reminder/remindpassword') > -1)
+	|| (location.href.toLowerCase().indexOf('registration.o2.co.uk/reclaim/reclaimusernameandpassword') > -1)
+	|| (location.href.toLowerCase().indexOf('ageverification.o2.co.uk') > -1)
+	)
+
+{    
+	if(location.protocol == "https:")
+	{
+		document.write("<s"+"cript type='text/javascript' src='https://shop.o2.co.uk/update/chat/service/mtagconfig.js'></scr"+"ipt>");   	
+	}
+		else
+	{
+		document.write("<s"+"cript type='text/javascript' src='http://shop.o2.co.uk/update/chat/service/mtagconfig.js'></scr"+"ipt>");
+	}
+}

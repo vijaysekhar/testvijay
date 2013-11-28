@@ -1,0 +1,4 @@
+app-global	{972ce4c6-7e08-4474-a285-3208198ce6fd}	rel%{972ce4c6-7e08-4474-a285-3208198ce6fd}	1305876705	
+app-global	{CAFEEFAC-0016-0000-0025-ABCDEFFEDCBA}	rel%{CAFEEFAC-0016-0000-0025-ABCDEFFEDCBA}	1305546431	
+winreg-app-global	{22C7F6C6-8D67-4534-92B5-529A0EC09405}	abs%c:\Program Files (x86)\Trend Micro\Client Server Security Agent\bho\1009\FirefoxExtension	1288119902	
+winreg-app-global	esnipsxpi@logia.esnips	abs%C:\Program Files (x86)\Logia\eSnipsDownloader\ext	1298554284	
