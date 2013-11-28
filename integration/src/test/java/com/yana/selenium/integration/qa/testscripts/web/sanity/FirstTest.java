@@ -38,6 +38,7 @@ public class FirstTest {
       @BeforeMethod
       public void beforeMethod() {
     	driver = new FirefoxDriver();
+    	System.setProperty("webdriver.firefox.bin","/usr/bin/firefox");
     	baseUrl = "http://ie.yanasoftware.com/";
     	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     	wait  = new WebDriverWait(driver, TIMEOUT);
