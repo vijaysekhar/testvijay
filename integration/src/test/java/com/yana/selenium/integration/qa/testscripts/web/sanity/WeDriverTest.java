@@ -6,13 +6,13 @@ public class WebDriverTest {
     @BeforeMethod
     public void setUp(@Optional("vijayasekhar") String username,
                       @Optional("04828aa7-a7d9-41a0-8b41-0a6aff7ee14d") String key,
-                      @Optional("windows") String os,
+                      @Optional("Windows 7") String os,
                       @Optional("firefox") String browser,
                       @Optional("18") String browserVersion,
                       Method method) throws Exception {
 
         // Choose the browser, version, and platform to test
-        DesiredCapabilities capabilities = new DesiredCapabilities();
+        DesiredCapabilities capabilities = new DesiredCapabilities().firefox();
         capabilities.setBrowserName(browser);
         capabilities.setCapability("version", browserVersion);
         capabilities.setCapability("platform", Platform.valueOf(os));
