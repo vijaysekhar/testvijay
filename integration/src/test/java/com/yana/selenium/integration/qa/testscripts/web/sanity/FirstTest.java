@@ -62,29 +62,40 @@ public class FirstTest {
 	driver.manage().window().maximize();
 	this.waitForPageLoaded(driver);
 	
+	 driver.get("http://ie.yanasoftware.com/Flights/index.action");
+     driver.findElement(By.linkText("Who We Are")).click();
+     driver.findElement(By.id("OW")).click();
+     driver.findElement(By.id("MC")).click();
+     driver.findElement(By.id("destLeg0")).click();
+     driver.findElement(By.id("destLeg0")).clear();
+     driver.findElement(By.id("destLeg0")).sendKeys("asasas");
+     driver.findElement(By.linkText("Show me flights")).click();
+     driver.findElement(By.id("destLeg0")).click();
+     driver.findElement(By.id("destLeg0")).sendKeys("\\9");
+	
 //	((JavascriptExecutor)driver).
 //    executeScript("window.onload=null;");
 	
-	driver.findElement(By.linkText("Who We Are")).click();
-	this.waitForPageLoaded(driver);
-	
-	
-
-	//driver.switchTo().activeElement().sendKeys(Keys.ENTER); 
-    driver.switchTo().frame(driver.findElement(By.tagName("iframe")).getText());  //.getWindowHandle();
-	//driver.switchTo().window(handle);
-	
-   
- 
-	 System.out.println(driver.findElement(By.className("close-window")).getText());
-	 System.out.println(driver.findElement(By.className("AboutusSkyTxt")).getText());
-	System.out.println(driver.findElement(By.className("AboutusNormalTxt")).getText());
-	System.out.println(driver.findElement(By.className("AboutusNormalTxt_para")).getText());
-	driver.findElement(By.className("link_blue")).click();
-	this.threadSleep(5000);
-	System.out.println("closed ");
-	driver.switchTo().defaultContent();
-	 	 
+//	driver.findElement(By.linkText("Who We Are")).click();
+//	this.waitForPageLoaded(driver);
+//	
+//	
+//
+//	//driver.switchTo().activeElement().sendKeys(Keys.ENTER); 
+//    driver.switchTo().frame(driver.findElement(By.tagName("iframe")).getText());  //.getWindowHandle();
+//	//driver.switchTo().window(handle);
+//	
+//   
+// 
+//	 System.out.println(driver.findElement(By.className("close-window")).getText());
+//	 System.out.println(driver.findElement(By.className("AboutusSkyTxt")).getText());
+//	System.out.println(driver.findElement(By.className("AboutusNormalTxt")).getText());
+//	System.out.println(driver.findElement(By.className("AboutusNormalTxt_para")).getText());
+//	driver.findElement(By.className("link_blue")).click();
+//	this.threadSleep(5000);
+//	System.out.println("closed ");
+//	driver.switchTo().defaultContent();
+//	 	 
   }
   
   public  WebElement waitForVisibility(By by) {			
