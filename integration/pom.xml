@@ -72,9 +72,49 @@
           <outputDirectory>${basedir}/Reports</outputDirectory>
         </configuration>
       </plugin> 
+      <!-- Include Sauce Connect plugin -->
+    <plugin>
+        <groupId>com.saucelabs.maven.plugin</groupId>
+        <artifactId>sauce-connect-plugin</artifactId>
+        <version>1.0.15</version>
+        <configuration>
+            <sauceUsername>vijayasekhar</sauceUsername>
+            <sauceAccessKey>04828aa7-a7d9-41a0-8b41-0a6aff7ee14d</sauceAccessKey>
+        </configuration>
+        <executions>
+            <!-- Start Sauce Connect prior to running the integration tests -->
+            <execution>
+                <id>start-sauceconnct</id>
+                <phase>pre-integration-test</phase>
+                <goals>
+                    <goal>start-sauceconnect</goal>
+                </goals>
+            </execution>
+            <!-- Stop the Sauce Connect process after the integration tests have finished -->
+            <execution>
+                <id>stop-sauceconnect</id>
+                <phase>post-integration-test</phase>
+                <goals>
+                    <goal>stop-sauceconnect</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
 	</plugins>
 	
   </build>
+  <pluginRepositories>
+<pluginRepository>
+   <id>saucelabs-repository</id>
+   <url>http://repository-saucelabs.forge.cloudbees.com/release</url>
+   <releases>
+       <enabled>true</enabled>
+   </releases>
+   <snapshots>
+       <enabled>true</enabled>
+   </snapshots>
+</pluginRepository>
+</pluginRepositories>
   <reporting>
 		<plugins>
 			<plugin>
