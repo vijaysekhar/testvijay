@@ -125,11 +125,11 @@
 		</plugins>
 	</reporting>
 	<repositories>
-		<repository>
+		<!-- <repository>
 			<id>selenium</id>
 			<name>Selenium release repository</name>
 			<url>http://repo1.maven.org/maven2/org/seleniumhq/selenium/</url>
-		</repository>
+		</repository> -->
 		<repository>
 			<id>saucelabs-repository</id>
 			<url>https://repository-saucelabs.forge.cloudbees.com/release</url>
